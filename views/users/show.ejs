@@ -1,0 +1,25 @@
+<% include ../partials/header %>
+
+<div class="row">
+    <div class="col-md-4">
+        <h1 class="text-center"><%= user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1) + " " + user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1)%></h1>
+        <div class="card mb-2">
+           <img class="img-thumbnail pic-circle"src="<%=user.avatar%>" alt="user profile image">
+           <div class="card-body">
+               <a href="mailto:<%=user.email%>"><%=user.email%></a></div>
+        <p class="px-3">
+         Come Sed consequat molestie rutrum. Donec vel elit elit. Nulla aliquet efficitur bibendum. Quisque a iaculis urna. Vivamus ornare tortor sit amet metus suscipit vulputate. Quisque vehicula metus a dui scelerisque cursus id a nibh. Sed eget tortor malesuada, congue ipsum id, ultrices metus. Phasellus vel massa luctus, commodo massa sed, tempus quam.
+            </p>
+            </div>
+    </div>
+    <div class="col-md-8 text-center">
+        <h3 class="mb-3 mt-4"><%= user.username.charAt(0).toUpperCase() + user.username.slice(1) %>'s campgrounds:</h3>
+        <ul>
+            <% campgrounds.forEach(function(campground){ %>
+           <li> <a href="/campgrounds/<%=campground.id%>"><%= campground.name%></a></li>
+           <% }) %>
+       </ul>
+    </div>
+</div>
+
+<% include ../partials/footer %>

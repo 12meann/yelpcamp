@@ -1,0 +1,19 @@
+<% include ./partials/header %>
+<div class="row justify-content-center text-center">
+	<div class="col-md-4 col-12">
+		<form action="/forgot" method="POST">
+			<legend>Forgot your password?</legend>
+			<div class="form-label-group">
+				<label for="email"><p>Please provide your email to reset your password</p></label>
+				<input type="email" name="email" autofocus class="form-control">
+			</div>
+			<div class="form-label-group">
+				<input type="submit" class="btn btn-primary btn-block" value="Reset Password">
+			</div>
+		</form>
+		<p class="text-center">
+            <a class="link-green"href="/campgrounds">Go Back</a>
+        </p>
+	</div>
+</div>
+<% include ./partials/footer %>

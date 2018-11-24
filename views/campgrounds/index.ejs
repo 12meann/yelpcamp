@@ -1,0 +1,111 @@
+<% include ../partials/header %>
+
+ 
+    <header class="jumbotron">
+        
+        <div class="container text-center">
+           
+           <div class="content">
+            <h1> Welcome to YelpCamp</h1>
+          
+            <p>View our hand-picked campgrounds from all over the world</p>
+              
+            <p>
+              <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Campground</a>
+            </p>
+            <a href="/campgrounds">View All Campgrounds</a>
+           </div>
+        </div>
+    </header>
+
+    <div class="row text-center">
+        <!--Search items-->
+        <div class="col-md-12 mb-4">
+            <% if(noMatch !== undefined){ %>
+            <h3><%= noMatch %></h3>
+            <% } %>
+        </div>
+<!--End of Search items-->
+
+        <% campgrounds.forEach(function(campground){ %> 
+         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+             <div class="card">
+                  <img class="card-img-top"id="homePix" src="<%= campground.image %>" alt="<%= campground.name %>">
+                  <div class="card-body card-no-padding">
+                    <h5 class="card-title"><%= campground.name %></h5>
+    <!--For ratings -->
+                    <% if (campground.rating === 0) { %>
+                        <em>No reviews yet.</em>
+                    <% } else { %>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star <% if (campground.rating > 1.5) { %> checked <% } %>"></span>
+                        <span class="fa fa-star <% if (campground.rating > 2.5) { %> checked <% } %>"></span>
+                        <span class="fa fa-star <% if (campground.rating > 3.5) { %> checked <% } %>"></span>
+                        <span class="fa fa-star <% if (campground.rating > 4.5) { %> checked <% } %>"></span>
+                    <% } %>
+               
+               
+    <!--End of ratings-->
+                <p>
+                    <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary mt-2 mb-0">More Info</a>
+                  </p>
+                  </div>
+            </div>
+        </div>
+       <% }); %>  
+  </div> 
+
+       
+
+
+<div class="row justify-content-center">
+     <div class="col-md-12 col-lg-4 text-center">
+    <nav aria-label="Page navigation">
+    <% if (pages && pages > 0) { %>
+    <ul class="pagination mx-auto">
+        <% if (current == 1) { %>
+        <li class="page-item disabled"><a class="page-link">First</a></li>
+        <% } else { %>
+        <li><a class="page-link" href="/campgrounds">First</a></li>
+        <% } %>
+ 
+        <% if (current == 1) { %>
+        <li class="page-item disabled"><a class="page-link">«</a></li>
+        <% } else { %>
+        <li><a class="page-link" href="/campgrounds?page=<%= Number(current) - 1 %>">«</a></li>
+        <% } %>
+ 
+        <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+        <% if (i !== 1) { %>
+        <li class="page-item disabled"><a class="page-link">...</a></li>
+        <% } %>
+        <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+        <% if (i == current) { %>
+        <li class="active"><a class="page-link"><%= i %></a></li>
+        <% } else { %>
+        <li><a class="page-link" href="/campgrounds?page=<%= i %>"><%= i %></a></li>
+        <% } %>
+        <% if (i == Number(current) + 4 && i < pages) { %>
+        <li class="page-item disabled"><a class="page-link">...</a></li>
+        <% } %>
+        <% } %>
+ 
+        <% if (current == pages) { %>
+        <li class="page-item disabled"><a class="page-link">»</a></li>
+        <% } else { %>
+        <li><a class="page-link" href="/campgrounds?page=<%= Number(current) + 1 %>">»</a></li>
+        <% } %>
+ 
+        <% if (current == pages) { %>
+        <li class="page-item disabled"><a class="page-link">Last</a></li>
+        <% } else { %>
+        <li><a class="page-link" href="/campgrounds?page=<%= pages %>">Last</a></li>
+        <% } %>
+    </ul>
+    <% } %>
+</nav>
+</div>
+</div>
+
+
+<% include ../partials/footer %>

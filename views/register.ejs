@@ -1,0 +1,57 @@
+<% include ./partials/header %>
+
+<div class="row justify-content-center">
+    
+    <div class="col-md-12 col-lg-4 text-center">
+        <form class="form-signin" action="/register" method="post">
+            <h1 class="h3 mb-3 font-weight-normal">Please Register</h1>
+            
+            <div class="form-label-group">
+            <label for="inputUsername" class="sr-only"></label>
+                <input class="form-control" id="inputUsername" type="text" name="username" placeholder="username">
+           </div>
+           
+           <div class="form-label-group">
+            <label for="inputPassword" class="sr-only"></label>
+                <input class="form-control" id="inputPassword" type="password" name="password" placeholder="password">
+        </div>
+        
+        <div class="form-label-group">
+            <label for="firstName" class="sr-only"></label>
+                <input class="form-control" id="firstName" type="text" name="firstName" placeholder="first name">
+              </div>
+              
+             <div class="form-label-group"> 
+            <label for="lastName" class="sr-only"></label>
+                <input class="form-control" id="lastName" type="text" name="lastName" placeholder="last name">
+             </div>
+             
+             <div class="form-label-group">
+            <label for="inputEmail" class="sr-only"></label>
+                <input class="form-control" id="inputEmail" type="email" name="email" placeholder="email">
+             </div>
+             
+             <div class="form-label-group">
+            <label for="avatar" class="sr-only"></label>
+                <input class="form-control" id="avatar" type="text" name="avatar" placeholder="avatar url">
+            </div>
+           
+            
+            <a href="#" class="enter-code">For admin-use only</a>
+            
+             
+             
+            <div class="form-label-group">
+                
+            <label for="adminCode" class="sr-only"></label>
+                <input id="admin"class="form-control show-admin-form" id="adminCode"type="text" name="adminCode" placeholder="Admin Code">
+            </div>
+            <button class="btn btn-lg btn-primary btn-block mt-2">Sign Up!</button>
+            
+        </form>
+        <p class="text-center">
+            <a class="link-green"href="/campgrounds">Go Back</a>
+        </p>
+    </div>
+</div>
+<% include ./partials/footer %>
