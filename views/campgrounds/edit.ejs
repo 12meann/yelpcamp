@@ -10,13 +10,16 @@
     <div class="col-10 col-md-6 col-lg-4">
         <form method="POST" action="/campgrounds/<%= campground._id %>?_method=PUT" enctype="multipart/form-data">
             <div class="form-group">
-                <input class="form-control" type="text" value="<%= campground.name %>" name="name">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" id="name"value="<%= campground.name %>" name="name">
             </div>
              <div class="form-group">
-                <input class="form-control" type="number" value="<%= campground.price %>" name="price" min="0.01" step="0.01">
+                 <label for="price">Price</label>
+                <input class="form-control" type="number" id="price"value="<%= campground.price %>" name="price" min="0.01" step="0.01">
             </div>
             <div class="form-group">
-               <textarea class="form-control" type="text" name="description"><%= campground.description %></textarea>
+                <label for="description">Description</label>
+               <textarea class="form-control" type="text" id="description"name="description"><%= campground.description %></textarea>
             </div>
             <div class="form-group">
                 <label for="image">Edit Image</label>

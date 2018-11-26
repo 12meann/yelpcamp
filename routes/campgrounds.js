@@ -4,7 +4,18 @@ var Campground = require("../models/campground");
 var Comment = require("../models/comment");
 var Review = require("../models/review");
 var middleware = require("../middleware");
-var multer = require('multer');   
+var NodeGeocoder = require('node-geocoder'); //GOOGLE MAPS
+ 
+var options = {
+  provider: 'google',
+  httpAdapter: 'https',
+  apiKey: process.env.GEOCODER_API_KEY,
+  formatter: null
+};
+ 
+var geocoder = NodeGeocoder(options);
+
+var multer = require('multer');   //IMAGE UPLOAD
 var storage = multer.diskStorage({
   filename: function(req, file, callback) {
     callback(null, Date.now() + file.originalname);
